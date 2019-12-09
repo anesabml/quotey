@@ -1,0 +1,137 @@
+plugins {
+    id 'com.android.application'
+    id 'com.github.triplet.play' version '2.6.1git '
+}
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+    defaultConfig {
+        applicationId "com.anesabml.quotey"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 2
+        versionName "1.1"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    dataBinding {
+        enabled = true
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    signingConfigs {
+        release {
+            storeFile file('quotey')
+            storePassword 'quotey'
+            keyAlias = 'key'
+            keyPassword 'key_quotey'
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+            multiDexEnabled = true
+        }
+    }
+
+    play {
+        defaultToAppBundles = true
+        track = 'beta' // 'internal', 'alpha','beta' or 'production'
+//        serviceAccountEmail = "quotey-service-account@api-8239268893241158549-612623.iam.gserviceaccount.com"
+        serviceAccountCredentials = file("quotey_service_account_key.json")
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    implementation project(':core')
+
+    // Support Libraries
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.core:core-ktx:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'androidx.preference:preference:1.1.0'
+
+    implementation 'com.google.android.material:material:1.2.0-alpha02'
+
+    def koin = "2.0.1"
+    // Koin for Android
+    implementation "org.koin:koin-android:$koin"
+    // or Koin for Lifecycle scoping
+    implementation "org.koin:koin-androidx-scope:$koin"
+    // or Koin for Android Architecture ViewModel
+    implementation "org.koin:koin-androidx-viewmodel:$koin"
+
+    // LiveData & ViewModel
+    def lifecycle = "2.1.0"
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle"
+
+    // Room
+    def room = "2.2.2"
+    implementation "androidx.room:room-runtime:$room"
+    implementation "androidx.room:room-ktx:$room"
+    kapt "androidx.room:room-compiler:$room"
+
+    // Retrofit
+    implementation("com.squareup.okhttp3:okhttp:4.0.1")
+    implementation('com.squareup.okhttp3:logging-interceptor:3.11.0')
+    implementation('com.squareup.retrofit2:retrofit:2.6.0')
+    implementation("com.squareup.retrofit2:converter-moshi:2.6.0")
+    implementation("com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2")
+
+    // Image
+//    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
+//    implementation 'com.github.bumptech.glide:glide:4.10.0'
+
+    // Work Manager
+    def work_version = "2.2.0"
+    // Kotlin + coroutines
+    implementation "androidx.work:work-runtime-ktx:$work_version"
+    // Test helpers
+    androidTestImplementation "androidx.work:work-testing:$work_version"
+
+    implementation "androidx.fragment:fragment-testing:1.2.0-rc03"
+
+    def androidx_test = "1.1.0"
+    testImplementation 'junit:junit:4.12'
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.2"
+
+    // AndroidX Test - JVM testing
+    implementation "androidx.test:core:$androidx_test"
+    testImplementation "androidx.test:core-ktx:$androidx_test"
+    testImplementation "androidx.test.ext:junit-ktx:$androidx_test"
+    testImplementation "androidx.arch.core:core-testing:2.1.0"
+    testImplementation "org.robolectric:robolectric:4.3.1"
+
+
+    // Mockito
+    testImplementation 'org.mockito:mockito-core:2.25.0'
+    androidTestImplementation "org.mockito:mockito-android:2.25.0"
+
+    // androidx.test
+    androidTestImplementation "androidx.test:core-ktx:$androidx_test"
+    androidTestImplementation "androidx.test:runner:$androidx_test"
+    androidTestImplementation "androidx.test:rules:$androidx_test"
+    androidTestImplementation "androidx.test.ext:junit-ktx:$androidx_test"
+    androidTestImplementation "androidx.arch.core:core-testing:2.1.0"
+
+    // Espresso
+    def androidx_test_espresso = "3.2.0"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$androidx_test_espresso"
+
+
+}

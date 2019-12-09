@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Quotey</string>
+    <string name="home">Home</string>
+    <string name="favorites">Favorites</string>
+    <string name="settings">Settings</string>
+    <string name="add_to_feedback_button">Add to feedback button</string>
+
+    <!-- General Preferences Titles -->
+    <string name="time_title">Time</string>
+    <string name="days_title">Days</string>
+
+    <!-- General Preferences Summaries -->
+    <string name="time_summary">Set the time you want to receive the quote</string>
+    <string name="days_summary">Set the days you want to receive the quote</string>
+
+    <!-- Days of the week -->
+    <string name="saturday">Saturday</string>
+    <string name="sunday">Sunday</string>
+    <string name="monday">Monday</string>
+    <string name="tuesday">Tuesday</string>
+    <string name="wednesday">Wednesday</string>
+    <string name="thursday">Thursday</string>
+    <string name="friday">Friday</string>
+    <string name="set">Set</string>
+    <string name="quote">Quote</string>
+    <string name="quote_description">Quote of the day</string>
+    <string name="quote_of_the_day">Quote of the day</string>
+    <string name="dark_mode_title">Dark mode</string>
+    <string name="dark_mode_summary">Enable or disable dark mode</string>
+</resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--colorPrimary colors map to components and elements, such as app bars and buttons. -->
+    <!--colorSecondary colors are most often used as accents on components, such as FABs and -->
+    <!--selection controls.-->
+    <color name="color_primary">#454545</color>
+    <color name="color_primary_variant">#212121</color>
+    <color name="color_primary_dark">#212121</color>
+    <color name="color_secondary">#454545</color>
+    <color name="color_secondary_variant">#212121</color>
+
+    <color name="color_surface">#eeeeee</color>
+
+</resources>

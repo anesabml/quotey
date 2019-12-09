@@ -1,0 +1,18 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorPrimaryVariant">@color/color_primary_variant</item>
+        <item name="colorPrimaryDark">@color/color_primary_dark</item>
+        <item name="colorSecondary">@color/color_secondary</item>
+        <item name="colorSecondaryVariant">@color/color_secondary_variant</item>
+        <item name="colorSurface">@color/color_surface</item>
+        <item name="android:fontFamily">@font/raleway</item>
+    </style>
+
+    <!--<style name="Launcher.Theme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground"></item>
+    </style>-->
+
+</resources>
