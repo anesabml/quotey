@@ -1,6 +1,6 @@
 plugins {
     id 'com.android.application'
-    id 'com.github.triplet.play' version '2.6.1git '
+    id 'com.github.triplet.play' version '2.6.1'
 }
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
