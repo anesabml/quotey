@@ -10,9 +10,4 @@
         <item name="colorSurface">@color/color_surface</item>
         <item name="android:fontFamily">@font/raleway</item>
     </style>
-
-    <!--<style name="Launcher.Theme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowBackground"></item>
-    </style>-->
-
 </resources>
