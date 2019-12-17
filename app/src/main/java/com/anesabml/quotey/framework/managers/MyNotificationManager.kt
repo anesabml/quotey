@@ -8,11 +8,11 @@ import android.content.Intent
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
-import com.anesabml.quotey.MainActivity
+import com.anesabml.quotey.ui.MainActivity
 import com.anesabml.quotey.R
 import com.anesabml.quotey.core.domain.Quote
 
-class NotificationManger(private val context: Context) {
+class MyNotificationManager(private val context: Context) {
 
     private val quoteChannelId = "quote"
     private val quoteChannelName = context.getString(R.string.quote)

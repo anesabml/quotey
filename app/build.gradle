@@ -9,6 +9,9 @@ apply plugin: 'kotlin-kapt'
 
 
 android {
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
     defaultConfig {
@@ -21,9 +24,6 @@ android {
     }
     dataBinding {
         enabled = true
-    }
-    kotlinOptions {
-        jvmTarget = '1.8'
     }
     signingConfigs {
         release {
@@ -64,6 +64,7 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'androidx.preference:preference:1.1.0'
+    implementation "androidx.fragment:fragment-testing:1.2.0-rc03"
 
     implementation 'com.google.android.material:material:1.2.0-alpha02'
 
@@ -104,29 +105,56 @@ dependencies {
     // Test helpers
     androidTestImplementation "androidx.work:work-testing:$work_version"
 
-    implementation "androidx.fragment:fragment-testing:1.2.0-rc03"
+    // --------------------- Test --------------------- //
 
-    def androidx_test = "1.1.0"
+    // Junit
     testImplementation 'junit:junit:4.12'
+
+    // Core library
+    def androidx_test = "1.1.0"
+    testImplementation "androidx.test:core:$androidx_test"
+    testImplementation "androidx.test:core-ktx:$androidx_test"
+
+    // AndroidJUnitRunner and JUnit Rules
+    testImplementation 'androidx.test:runner:1.2.0'
+    testImplementation 'androidx.test:rules:1.2.0'
+
+    // Assertions
+    testImplementation "androidx.test.ext:junit:$androidx_test"
+    testImplementation "androidx.test.ext:junit-ktx:$androidx_test"
+    testImplementation "androidx.test.ext:truth:$androidx_test"
+    testImplementation 'com.google.truth:truth:0.44'
+
+    // Test helpers for LiveData
+    testImplementation "androidx.arch.core:core-testing:2.1.0"
+
+    // Test helpers for Coroutines
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.2"
 
-    // AndroidX Test - JVM testing
-    implementation "androidx.test:core:$androidx_test"
-    testImplementation "androidx.test:core-ktx:$androidx_test"
-    testImplementation "androidx.test.ext:junit-ktx:$androidx_test"
-    testImplementation "androidx.arch.core:core-testing:2.1.0"
+    // Robolectric
     testImplementation "org.robolectric:robolectric:4.3.1"
-
 
     // Mockito
     testImplementation 'org.mockito:mockito-core:2.25.0'
     androidTestImplementation "org.mockito:mockito-android:2.25.0"
 
-    // androidx.test
+    // --------------------- Android Test --------------------- //
+
+    // Core library
+    androidTestImplementation "androidx.test:core:$androidx_test"
     androidTestImplementation "androidx.test:core-ktx:$androidx_test"
+
+    // AndroidJUnitRunner and JUnit Rules
     androidTestImplementation "androidx.test:runner:$androidx_test"
     androidTestImplementation "androidx.test:rules:$androidx_test"
+
+    // Assertions
+    androidTestImplementation "androidx.test.ext:junit:$androidx_test"
     androidTestImplementation "androidx.test.ext:junit-ktx:$androidx_test"
+    androidTestImplementation "androidx.test.ext:truth:$androidx_test"
+    androidTestImplementation 'com.google.truth:truth:0.44'
+
+    // Test helpers for LiveData
     androidTestImplementation "androidx.arch.core:core-testing:2.1.0"
 
     // Espresso

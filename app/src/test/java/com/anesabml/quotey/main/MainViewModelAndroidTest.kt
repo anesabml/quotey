@@ -1,11 +1,13 @@
-package com.anesabml.quotey
+package com.anesabml.quotey.main
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.anesabml.quotey.core.data.QuoteRepository
 import com.anesabml.quotey.core.domain.Quote
 import com.anesabml.quotey.core.interactors.*
 import com.anesabml.quotey.framework.FakeQuoteDataSource
 import com.anesabml.quotey.framework.Interactors
+import com.anesabml.quotey.getOrAwaitValue
 import com.anesabml.quotey.ui.main.MainViewModel
 import org.hamcrest.core.Is.`is`
 import org.hamcrest.core.IsNot.not
@@ -35,7 +37,8 @@ class MainViewModelAndroidTest {
         )
 
         val quoteDataSource = FakeQuoteDataSource(quotes)
-        val repository = FakeQuoteRepository(quoteDataSource)
+//        val repository = FakeQuoteRepository(quoteDataSource)
+        val repository = QuoteRepository(quoteDataSource)
         interactors = Interactors(
             GetRandomQuote(repository),
             AddQuote(repository),

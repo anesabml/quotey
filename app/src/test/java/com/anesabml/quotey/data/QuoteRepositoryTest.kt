@@ -1,4 +1,4 @@
-package com.anesabml.quotey
+package com.anesabml.quotey.data
 
 import com.anesabml.quotey.core.domain.Quote
 import com.anesabml.quotey.framework.FakeQuoteDataSource

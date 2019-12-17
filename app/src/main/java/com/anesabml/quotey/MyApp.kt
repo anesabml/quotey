@@ -4,11 +4,11 @@ import android.app.Application
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.PreferenceManager
 import com.anesabml.quotey.core.data.IQuoteRepository
-import com.anesabml.quotey.core.data.QuoteDataSource
+import com.anesabml.quotey.core.data.IQuoteDataSource
 import com.anesabml.quotey.core.data.QuoteRepository
 import com.anesabml.quotey.core.interactors.*
 import com.anesabml.quotey.framework.Interactors
-import com.anesabml.quotey.framework.RemoteLocalQuoteDataSource
+import com.anesabml.quotey.framework.data.RemoteLocalQuoteDataSource
 import com.anesabml.quotey.ui.favorites.FavoriteQuotesViewModel
 import com.anesabml.quotey.ui.main.MainViewModel
 import org.koin.android.ext.koin.androidContext
@@ -31,7 +31,11 @@ class MyApp : Application() {
         }
 
         val myModule = module {
-            single<QuoteDataSource> { RemoteLocalQuoteDataSource(this@MyApp) }
+            single<IQuoteDataSource> {
+                RemoteLocalQuoteDataSource(
+                    this@MyApp
+                )
+            }
             single<IQuoteRepository> { QuoteRepository(get()) }
 
             single {

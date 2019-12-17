@@ -1,9 +1,9 @@
 package com.anesabml.quotey.framework
 
-import com.anesabml.quotey.core.data.QuoteDataSource
+import com.anesabml.quotey.core.data.IQuoteDataSource
 import com.anesabml.quotey.core.domain.Quote
 
-class FakeQuoteDataSource(var quotes: MutableList<Quote>? = mutableListOf()) : QuoteDataSource {
+class FakeQuoteDataSource(var quotes: MutableList<Quote>? = mutableListOf()) : IQuoteDataSource {
     override suspend fun getQod(): Quote {
         return quotes?.first() ?: Quote.Empty
     }

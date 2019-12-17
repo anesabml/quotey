@@ -2,7 +2,7 @@ package com.anesabml.quotey.core.data
 
 import com.anesabml.quotey.core.domain.Quote
 
-class QuoteRepository(private var quoteDataSource: QuoteDataSource) : IQuoteRepository {
+class QuoteRepository(private var quoteDataSource: IQuoteDataSource) : IQuoteRepository {
 
     override suspend fun getQod() = quoteDataSource.getQod()
 

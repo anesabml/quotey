@@ -10,7 +10,6 @@ import androidx.lifecycle.Observer
 import com.anesabml.quotey.R
 import com.anesabml.quotey.core.domain.Quote
 import com.anesabml.quotey.databinding.MainFragmentBinding
-import com.anesabml.quotey.framework.managers.NotificationManger
 import com.google.android.material.snackbar.Snackbar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

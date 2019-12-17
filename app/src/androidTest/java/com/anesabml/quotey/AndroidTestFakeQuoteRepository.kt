@@ -1,10 +1,10 @@
 package com.anesabml.quotey
 
 import com.anesabml.quotey.core.data.IQuoteRepository
-import com.anesabml.quotey.core.data.QuoteDataSource
+import com.anesabml.quotey.core.data.IQuoteDataSource
 import com.anesabml.quotey.core.domain.Quote
 
-class AndroidTestFakeQuoteRepository(private var quoteDataSource: QuoteDataSource) : IQuoteRepository {
+class AndroidTestFakeQuoteRepository(private var quoteDataSource: IQuoteDataSource) : IQuoteRepository {
     override suspend fun getQod(): Quote =
         quoteDataSource.getQod()
 

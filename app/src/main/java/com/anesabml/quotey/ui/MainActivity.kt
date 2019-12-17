@@ -1,4 +1,4 @@
-package com.anesabml.quotey
+package com.anesabml.quotey.ui
 
 import android.os.Bundle
 import android.view.MenuItem
@@ -6,6 +6,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import com.anesabml.quotey.R
 import com.anesabml.quotey.databinding.ActivityMainBinding
 import com.anesabml.quotey.framework.utils.WorkerUtils
 import com.anesabml.quotey.ui.favorites.FavoriteQuotesFragment
@@ -24,7 +25,9 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        binding = DataBindingUtil.setContentView(this,
+            R.layout.activity_main
+        )
 
         binding.bottomNavView.setOnNavigationItemSelectedListener(this)
 
