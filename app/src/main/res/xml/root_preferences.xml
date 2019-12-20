@@ -34,10 +34,14 @@
         app:title="@string/days_title"
         app:useSimpleSummaryProvider="true" />
 
-    <SwitchPreference
-        android:key="dark_mode"
+    <ListPreference
+        app:defaultValue="auto"
+        app:entries="@array/themes_entries"
+        app:entryValues="@array/themes_values"
         app:iconSpaceReserved="false"
-        app:summary="@string/dark_mode_summary"
-        app:title="@string/dark_mode_title" />
+        app:key="theme"
+        app:summary="@string/theme_title"
+        app:title="@string/theme_summary"
+        app:useSimpleSummaryProvider="true" />
 
 </PreferenceScreen>

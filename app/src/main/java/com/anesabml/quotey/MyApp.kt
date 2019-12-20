@@ -1,10 +1,11 @@
 package com.anesabml.quotey
 
 import android.app.Application
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.PreferenceManager
-import com.anesabml.quotey.core.data.IQuoteRepository
 import com.anesabml.quotey.core.data.IQuoteDataSource
+import com.anesabml.quotey.core.data.IQuoteRepository
 import com.anesabml.quotey.core.data.QuoteRepository
 import com.anesabml.quotey.core.interactors.*
 import com.anesabml.quotey.framework.Interactors
@@ -21,15 +22,12 @@ class MyApp : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
-        val darkModeEnabled = sharedPreferences.getBoolean("dark_mode", false)
+        setupDI()
 
-        if (darkModeEnabled) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-        } else {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-        }
+        setupSharedPreferenceListener()
+    }
 
+    private fun setupDI() {
         val myModule = module {
             single<IQuoteDataSource> {
                 RemoteLocalQuoteDataSource(
@@ -59,5 +57,21 @@ class MyApp : Application() {
             // declare modules
             modules(myModule)
         }
+    }
+
+    private fun setupSharedPreferenceListener() {
+        val defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        val listener =
+            SharedPreferences.OnSharedPreferenceChangeListener { sharedPreferences, key ->
+                if (key == "theme") {
+                    when (sharedPreferences.getString("theme", "light")) {
+                        "light" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                        "dark" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                        "auto" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+                    }
+
+                }
+            }
+        defaultSharedPreferences.registerOnSharedPreferenceChangeListener(listener)
     }
 }

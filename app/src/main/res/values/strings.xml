@@ -25,6 +25,9 @@
     <string name="quote">Quote</string>
     <string name="quote_description">Quote of the day</string>
     <string name="quote_of_the_day">Quote of the day</string>
-    <string name="dark_mode_title">Dark mode</string>
-    <string name="dark_mode_summary">Enable or disable dark mode</string>
+    <string name="theme_title">Theme</string>
+    <string name="theme_summary">Enable or disable dark mode</string>
+    <string name="light">Light</string>
+    <string name="dark">Dark</string>
+    <string name="auto">Auto</string>
 </resources>

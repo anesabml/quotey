@@ -19,7 +19,6 @@
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline3"
             android:textColor="?attr/colorOnBackground"
             android:textStyle="bold"
-            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

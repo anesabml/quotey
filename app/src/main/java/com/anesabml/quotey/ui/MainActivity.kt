@@ -25,24 +25,20 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this,
+        binding = DataBindingUtil.setContentView(
+            this,
             R.layout.activity_main
         )
 
+        initFragments()
+
         binding.bottomNavView.setOnNavigationItemSelectedListener(this)
-
-
-        if (savedInstanceState == null) {
-            setupFragments()
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.container, currentFragment)
-                .commitNow()
-        }
+        binding.bottomNavView.selectedItemId = R.id.home
 
         WorkerUtils.setupWork(this)
     }
 
-    private fun setupFragments() {
+    private fun initFragments() {
         favoriteQuotesFragment = FavoriteQuotesFragment.newInstance()
         mainFragment = MainFragment.newInstance()
         settingsFragment = SettingsFragment()
