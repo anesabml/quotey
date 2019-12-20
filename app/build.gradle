@@ -64,7 +64,7 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'androidx.preference:preference:1.1.0'
-    implementation "androidx.fragment:fragment-testing:1.2.0-rc03"
+    implementation "androidx.fragment:fragment-testing:1.2.0-rc04"
 
     implementation 'com.google.android.material:material:1.2.0-alpha02'
 
@@ -82,7 +82,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle"
 
     // Room
-    def room = "2.2.2"
+    def room = "2.2.3"
     implementation "androidx.room:room-runtime:$room"
     implementation "androidx.room:room-ktx:$room"
     kapt "androidx.room:room-compiler:$room"
