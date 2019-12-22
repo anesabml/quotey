@@ -40,8 +40,6 @@ class MainFragment : Fragment() {
 
         setupObservers()
 
-        getData()
-
 //        val notificationManager = NotificationManger(context!!)
 //        notificationManager.showQodNotification(Quote.Empty)
     }
@@ -67,14 +65,13 @@ class MainFragment : Fragment() {
             }
         })
 
-        viewModel.error.observe(viewLifecycleOwner, Observer {
+        viewModel.errorText.observe(viewLifecycleOwner, Observer {
             viewModel.getLastQuote()
             Snackbar.make(binding.root, it, Snackbar.LENGTH_SHORT).show()
         })
-    }
 
-    private fun getData() {
-        viewModel.getRandomQuote()
+
+        viewModel.start()
     }
 
     @SuppressLint("SetTextI18n")
@@ -84,5 +81,8 @@ class MainFragment : Fragment() {
         }
         binding.quote.text = "\"${quote.quote}\""
         binding.author.text = quote.author
+
+
+        binding.addToFavoriteButton.visibility = View.VISIBLE
     }
 }

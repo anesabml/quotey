@@ -11,12 +11,14 @@
 
         <ImageButton
             android:id="@+id/add_to_favorite_button"
+            style="@style/Widget.MaterialComponents.MaterialCalendar.HeaderToggleButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:background="@null"
             android:contentDescription="@string/add_to_feedback_button"
+            android:tint="?attr/colorOnBackground"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_star" />

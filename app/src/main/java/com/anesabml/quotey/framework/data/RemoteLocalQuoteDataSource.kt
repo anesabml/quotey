@@ -12,7 +12,7 @@ class RemoteLocalQuoteDataSource(context: Context) : IQuoteDataSource {
     private var quoteDao = QuoteyDatabase.getInstance(context).quoteDao()
     private var api = ApiService.api
 
-    override suspend fun addQuote(quote: Quote) {
+    override suspend fun addQuote(quote: Quote) =
         quoteDao.addQuote(
             QuoteEntity(
                 id = quote.id,
@@ -24,9 +24,9 @@ class RemoteLocalQuoteDataSource(context: Context) : IQuoteDataSource {
                 length = quote.length
             )
         )
-    }
 
-    override suspend fun addToFavorites(quote: Quote) {
+
+    override suspend fun addToFavorites(quote: Quote) =
         quoteDao.updateQuote(
             QuoteEntity(
                 id = quote.id,
@@ -39,27 +39,28 @@ class RemoteLocalQuoteDataSource(context: Context) : IQuoteDataSource {
                 isFavorite = true
             )
         )
-    }
 
-    override suspend fun removeFromFavorites(quote: Quote) = quoteDao.removeQuote(
-        QuoteEntity(
-            id = quote.id,
-            quote = quote.quote,
-            author = quote.author,
-            background = quote.background,
-            category = quote.category,
-            title = quote.title,
-            length = quote.length,
-            isFavorite = false
+
+    override suspend fun removeFromFavorites(quote: Quote) =
+        quoteDao.removeQuote(
+            QuoteEntity(
+                id = quote.id,
+                quote = quote.quote,
+                author = quote.author,
+                background = quote.background,
+                category = quote.category,
+                title = quote.title,
+                length = quote.length,
+                isFavorite = false
+            )
         )
-    )
 
-    override suspend fun getQod(): Quote {
-        return api.getRandomQuote().body()?.contents?.quotes?.firstOrNull() ?: Quote.Empty
-    }
+    override suspend fun getQod() =
+        api.getRandomQuote().body()?.contents?.quotes?.firstOrNull() ?: Quote.Empty
 
-    override suspend fun readFavorites(): List<Quote> {
-        return quoteDao.getFavorites().map {
+
+    override suspend fun readFavorites() =
+        quoteDao.getFavorites().map {
             Quote(
                 id = it.id,
                 quote = it.quote,
@@ -69,8 +70,8 @@ class RemoteLocalQuoteDataSource(context: Context) : IQuoteDataSource {
                 title = it.title,
                 length = it.length
             )
+
         }
-    }
 
     override suspend fun readAll(): List<Quote> {
         return quoteDao.getAll().map {

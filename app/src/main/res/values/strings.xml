@@ -30,4 +30,8 @@
     <string name="light">Light</string>
     <string name="dark">Dark</string>
     <string name="auto">Auto</string>
+    <string name="error_getting_favorites">Error getting favorites, try later</string>
+    <string name="no_favorites_yet">No favorites yet</string>
+    <string name="error_getting_quote">Error getting quote</string>
+    <string name="error_updating_favorites">Error updating favorites</string>
 </resources>

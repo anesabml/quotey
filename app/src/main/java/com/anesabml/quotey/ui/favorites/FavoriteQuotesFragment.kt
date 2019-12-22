@@ -35,11 +35,23 @@ class FavoriteQuotesFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        viewModel.getFavoritesQuotes()
-
         viewModel.quotes.observe(viewLifecycleOwner, Observer {
             adapter.changeContent(it)
         })
+
+        viewModel.errorText.observe(viewLifecycleOwner, Observer {
+            binding.errorText.text = getString(it)
+        })
+
+        viewModel.isLoading.observe(viewLifecycleOwner, Observer {
+            if (it) {
+                binding.progressBar.show()
+            } else {
+                binding.progressBar.hide()
+            }
+        })
+
+        viewModel.start()
     }
 
     companion object {

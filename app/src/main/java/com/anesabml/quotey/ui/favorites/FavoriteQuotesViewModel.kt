@@ -1,7 +1,10 @@
 package com.anesabml.quotey.ui.favorites
 
+import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.anesabml.quotey.R
 import com.anesabml.quotey.core.domain.Quote
 import com.anesabml.quotey.framework.Interactors
 import com.anesabml.quotey.ui.QuoteyViewModel
@@ -10,14 +13,32 @@ import kotlinx.coroutines.launch
 class FavoriteQuotesViewModel(interactors: Interactors) :
     QuoteyViewModel(interactors) {
 
-    val quotes = MutableLiveData<List<Quote>>()
+    private val _quotes = MutableLiveData<List<Quote>>()
+    val quotes: LiveData<List<Quote>> = _quotes
 
-    fun getFavoritesQuotes() {
-        viewModelScope.launch(coroutineExceptionHandler) {
+    private val _errorText = MutableLiveData<Int>()
+    val errorText: LiveData<Int> = _errorText
+
+    private fun getFavoritesQuotes() {
+        viewModelScope.launch {
             isLoading.postValue(true)
-            quotes.postValue(interactors.getFavoritesQuotes.invoke())
+            try {
+                val result = interactors.getFavoritesQuotes.invoke()
+                if (result.isEmpty()) {
+                    _errorText.value = R.string.no_favorites_yet
+                } else {
+                    _quotes.postValue(interactors.getFavoritesQuotes.invoke())
+                }
+            } catch (error: Throwable) {
+                Log.e("FavoriteQuotesViewModel", error.message ?: "Error trying to get favorites")
+                _errorText.value = R.string.error_getting_favorites
+            }
             isLoading.postValue(false)
         }
+    }
+
+    fun start() {
+        getFavoritesQuotes()
     }
 
 

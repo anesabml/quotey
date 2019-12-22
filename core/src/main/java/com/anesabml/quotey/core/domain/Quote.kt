@@ -12,7 +12,7 @@ data class Quote(
     companion object {
         val Empty = Quote(
             "",
-            "IT IS IMPOSSIBLE FOR A MAN TO LEARN WHAT HE THINKS HE ALREADY KNOWS",
+            "It is impossible for a man to learn what he thinks he already knows.",
             "EPECTATUS",
             "",
             "",

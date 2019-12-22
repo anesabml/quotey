@@ -10,7 +10,7 @@ object ApiService {
 
     private const val BASE_URL = "http://quotes.rest/"
 
-    private val logging = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BASIC)
+    private val logging = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
 
     private val apiClient =
         OkHttpClient().newBuilder().addInterceptor(logging).build()

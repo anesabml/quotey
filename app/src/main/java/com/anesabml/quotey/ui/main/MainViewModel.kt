@@ -1,7 +1,10 @@
 package com.anesabml.quotey.ui.main
 
+import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.anesabml.quotey.R
 import com.anesabml.quotey.core.domain.Quote
 import com.anesabml.quotey.framework.Interactors
 import com.anesabml.quotey.ui.QuoteyViewModel
@@ -10,53 +13,84 @@ import kotlinx.coroutines.launch
 class MainViewModel(interactors: Interactors) :
     QuoteyViewModel(interactors) {
 
-    val quote = MutableLiveData<Quote>()
-    val isFavorite = MutableLiveData<Boolean>(false)
+    private val _quote = MutableLiveData<Quote>()
+    val quote: LiveData<Quote> = _quote
+
+    private val _isFavorite = MutableLiveData<Boolean>(false)
+    val isFavorite: LiveData<Boolean> = _isFavorite
+
+    private val _errorText = MutableLiveData<Int>()
+    val errorText: LiveData<Int> = _errorText
 
     fun getRandomQuote() {
-        viewModelScope.launch(coroutineExceptionHandler) {
-            isLoading.postValue(true)
-            // Get the quote of the day 'Qod'
-            val qod = interactors.getRandomQuote.invoke()
-            // Add quote to db
-            interactors.addQuote(qod)
-            // Set the quote
-            setQuote(qod)
+        viewModelScope.launch {
+            try {
+                isLoading.postValue(true)
+                // Get the quote of the day 'Qod'
+                val qod = interactors.getRandomQuote.invoke()
+                // Add quote to db
+                interactors.addQuote(qod)
+                // Set the quote
+                setQuote(qod)
+            } catch (error: Throwable) {
+                Log.e(
+                    "MainViewModel",
+                    error.message ?: "Error trying to get quote"
+                )
+                _errorText.value = R.string.error_getting_quote
+            }
             isLoading.postValue(false)
         }
     }
 
     fun getLastQuote() {
-        viewModelScope.launch(coroutineExceptionHandler) {
-            isLoading.postValue(true)
-            // Get the last quote from db
-            val allQuotes = interactors.getAllQuotes.invoke()
-            allQuotes.firstOrNull()?.let {
-                // Set the quote
-                setQuote(it)
+        viewModelScope.launch {
+            try {
+                isLoading.postValue(true)
+                // Get the last quote from db
+                val allQuotes = interactors.getAllQuotes.invoke()
+                allQuotes.firstOrNull()?.let {
+                    // Set the quote
+                    setQuote(it)
+                }
+            } catch (error: Throwable) {
+                Log.e(
+                    "MainViewModel",
+                    error.message ?: "Error trying to get quote"
+                )
+                _errorText.value = R.string.error_getting_quote
             }
             isLoading.postValue(false)
         }
     }
 
-    fun setQuote(newQuote: Quote) {
-        quote.postValue(newQuote)
+    private fun setQuote(newQuote: Quote) {
+        _quote.postValue(newQuote)
     }
 
     fun updateFavorite() {
-        viewModelScope.launch(coroutineExceptionHandler) {
-            quote.value?.let {
+        viewModelScope.launch {
+            try {
                 isLoading.postValue(true)
                 if (isFavorite.value!!) {
-                    interactors.removeQuoteFromFavorite.invoke(it)
-                    isFavorite.postValue(false)
+                    interactors.removeQuoteFromFavorite.invoke(quote.value!!)
+                    _isFavorite.postValue(false)
                 } else {
-                    interactors.addQuoteToFavorite.invoke(it)
-                    isFavorite.postValue(true)
+                    interactors.addQuoteToFavorite.invoke(quote.value!!)
+                    _isFavorite.postValue(true)
                 }
-                isLoading.postValue(false)
+            } catch (error: Throwable) {
+                Log.e(
+                    "MainViewModel",
+                    error.message ?: "Error trying to update favorites"
+                )
+                _errorText.value = R.string.error_updating_favorites
             }
-
+            isLoading.postValue(false)
         }
+    }
+
+    fun start() {
+        getRandomQuote()
     }
 }
