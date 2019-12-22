@@ -14,5 +14,5 @@ data class QuoteEntity(
     @ColumnInfo val category: String,
     @ColumnInfo val title: String,
     @ColumnInfo val length: Int,
-    @ColumnInfo val isFavorite: Boolean = false
+    @ColumnInfo var isFavorite: Boolean = false
 )
