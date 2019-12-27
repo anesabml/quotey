@@ -3,6 +3,7 @@ package com.anesabml.quotey.ui.main
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import androidx.lifecycle.viewModelScope
 import com.anesabml.quotey.R
 import com.anesabml.quotey.core.domain.Quote
@@ -16,8 +17,9 @@ class MainViewModel(interactors: Interactors) :
     private val _quote = MutableLiveData<Quote>()
     val quote: LiveData<Quote> = _quote
 
-    private val _isFavorite = MutableLiveData<Boolean>(false)
-    val isFavorite: LiveData<Boolean> = _isFavorite
+    val isFavorite: LiveData<Boolean> = Transformations.map(_quote) {
+        it.isFavorite
+    }
 
     private val _errorText = MutableLiveData<Int>()
     val errorText: LiveData<Int> = _errorText
@@ -72,12 +74,16 @@ class MainViewModel(interactors: Interactors) :
         viewModelScope.launch {
             try {
                 isLoading.postValue(true)
-                if (isFavorite.value!!) {
-                    interactors.removeQuoteFromFavorite.invoke(quote.value!!)
-                    _isFavorite.postValue(false)
-                } else {
-                    interactors.addQuoteToFavorite.invoke(quote.value!!)
-                    _isFavorite.postValue(true)
+                quote.value?.let {
+                    if (it.isFavorite) {
+                        it.isFavorite = false
+                        interactors.updateQuote.invoke(it)
+                        _quote.notifyObservers()
+                    } else {
+                        it.isFavorite = true
+                        interactors.updateQuote.invoke(it)
+                        _quote.notifyObservers()
+                    }
                 }
             } catch (error: Throwable) {
                 Log.e(
@@ -93,4 +99,8 @@ class MainViewModel(interactors: Interactors) :
     fun start() {
         getRandomQuote()
     }
+}
+
+private fun <T> MutableLiveData<T>.notifyObservers() {
+    this.value = this.value
 }

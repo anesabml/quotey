@@ -24,7 +24,7 @@ class AndroidTestFakeQuoteDataSource(var quotes: MutableList<Quote>? = mutableLi
         quotes?.add(quote)
     }
 
-    override suspend fun removeFromFavorites(quote: Quote) {
+    override suspend fun updateQuote(quote: Quote) {
         quotes?.remove(quote)
     }
 

@@ -26,7 +26,7 @@ class RemoteLocalQuoteDataSource(context: Context) : IQuoteDataSource {
         )
 
 
-    override suspend fun addToFavorites(quote: Quote) =
+    override suspend fun updateQuote(quote: Quote) =
         quoteDao.updateQuote(
             QuoteEntity(
                 id = quote.id,
@@ -36,22 +36,7 @@ class RemoteLocalQuoteDataSource(context: Context) : IQuoteDataSource {
                 category = quote.category,
                 title = quote.title,
                 length = quote.length,
-                isFavorite = true
-            )
-        )
-
-
-    override suspend fun removeFromFavorites(quote: Quote) =
-        quoteDao.removeQuote(
-            QuoteEntity(
-                id = quote.id,
-                quote = quote.quote,
-                author = quote.author,
-                background = quote.background,
-                category = quote.category,
-                title = quote.title,
-                length = quote.length,
-                isFavorite = false
+                isFavorite = quote.isFavorite
             )
         )
 

@@ -1,1 +1,1 @@
-Change the theme without restarting the app.
+Add progress to ui.

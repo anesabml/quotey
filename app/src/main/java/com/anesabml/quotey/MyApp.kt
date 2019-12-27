@@ -40,8 +40,7 @@ class MyApp : Application() {
                 Interactors(
                     GetRandomQuote(get()),
                     AddQuote(get()),
-                    AddQuoteToFavorite(get()),
-                    RemoveQuoteFromFavorite(get()),
+                    UpdateQuote(get()),
                     GetFavoritesQuotes(get()),
                     GetAllQuotes(get())
                 )

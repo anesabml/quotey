@@ -20,11 +20,7 @@ class FakeQuoteDataSource(var quotes: MutableList<Quote>? = mutableListOf()) : I
         quotes?.add(quote)
     }
 
-    override suspend fun addToFavorites(quote: Quote) {
-        quotes?.add(quote)
-    }
-
-    override suspend fun removeFromFavorites(quote: Quote) {
+    override suspend fun updateQuote(quote: Quote) {
         quotes?.remove(quote)
     }
 

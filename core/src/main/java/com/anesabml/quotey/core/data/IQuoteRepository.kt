@@ -7,11 +7,10 @@ interface IQuoteRepository {
 
     suspend fun addQuote(quote: Quote)
 
-    suspend fun addToFavorites(quote: Quote)
+    suspend fun updateQuote(quote: Quote)
 
     suspend fun getFavorites(): List<Quote>
 
     suspend fun getAll(): List<Quote>
 
-    suspend fun removeFromFavorites(quote: Quote)
 }

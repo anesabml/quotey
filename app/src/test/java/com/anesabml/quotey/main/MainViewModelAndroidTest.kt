@@ -42,8 +42,7 @@ class MainViewModelAndroidTest {
         interactors = Interactors(
             GetRandomQuote(repository),
             AddQuote(repository),
-            AddQuoteToFavorite(repository),
-            RemoveQuoteFromFavorite(repository),
+            UpdateQuote(repository),
             GetFavoritesQuotes(repository),
             GetAllQuotes(repository)
         )

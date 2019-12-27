@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 
 @Database(
     entities = [QuoteEntity::class],
-    version = 1,
+    version = 3,
     exportSchema = false
 )
 abstract class QuoteyDatabase : RoomDatabase() {

@@ -34,4 +34,5 @@
     <string name="no_favorites_yet">No favorites yet</string>
     <string name="error_getting_quote">Error getting quote</string>
     <string name="error_updating_favorites">Error updating favorites</string>
+    <string name="quote_image">Quote Image</string>
 </resources>

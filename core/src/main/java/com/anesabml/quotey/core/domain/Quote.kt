@@ -7,7 +7,8 @@ data class Quote(
     val background: String = "",
     val category: String = "",
     val title: String = "",
-    val length: Int = 0
+    val length: Int = 0,
+    var isFavorite: Boolean = false
 ) {
     companion object {
         val Empty = Quote(

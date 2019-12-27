@@ -7,9 +7,7 @@ interface IQuoteDataSource {
 
     suspend fun addQuote(quote: Quote)
 
-    suspend fun addToFavorites(quote: Quote)
-
-    suspend fun removeFromFavorites(quote: Quote)
+    suspend fun updateQuote(quote: Quote)
 
     suspend fun readAll(): List<Quote>
 

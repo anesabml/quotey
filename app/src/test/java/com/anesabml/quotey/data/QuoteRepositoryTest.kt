@@ -48,7 +48,7 @@ class QuoteRepositoryTest {
         val newQuote = Quote("1", "Quote", "Author")
 
         // WHEN - Adding the quote
-        quoteDataSource.addToFavorites(newQuote)
+        quoteDataSource.updateQuote(newQuote)
         quotes.add(newQuote)
 
         // THEN - The quote has been added
@@ -83,7 +83,7 @@ class QuoteRepositoryTest {
 
         // WHEN - Adding the quote
         quoteDataSource.addQuote(newQuote)
-        quoteDataSource.removeFromFavorites(newQuote)
+        quoteDataSource.updateQuote(newQuote)
 
         // THEN - The quote has been added
         val list = quoteDataSource.readAll()
