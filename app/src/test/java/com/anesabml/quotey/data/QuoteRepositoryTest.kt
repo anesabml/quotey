@@ -1,5 +1,6 @@
 package com.anesabml.quotey.data
 
+import com.anesabml.quotey.core.data.QuoteRepository
 import com.anesabml.quotey.core.domain.Quote
 import com.anesabml.quotey.framework.FakeQuoteDataSource
 import junit.framework.Assert.assertNotNull
@@ -7,6 +8,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.core.Is.`is`
+import org.junit.Before
 import org.junit.Test
 
 @ExperimentalCoroutinesApi
@@ -18,11 +20,17 @@ class QuoteRepositoryTest {
         Quote("1", "Quote", "Author")
     )
 
-    private var quoteDataSource: FakeQuoteDataSource = FakeQuoteDataSource(quotes)
+    private lateinit var quoteRepository: QuoteRepository
+
+    @Before
+    fun init() {
+        val quoteDataSource = FakeQuoteDataSource(quotes)
+        quoteRepository = QuoteRepository(quoteDataSource)
+    }
 
     @Test
     fun getQod_getRandomQuote() = runBlockingTest {
-        val quote = quoteDataSource.getQod()
+        val quote = quoteRepository.getQod()
 
         assertNotNull(quote)
     }
@@ -33,11 +41,11 @@ class QuoteRepositoryTest {
         val newQuote = Quote("1", "Quote", "Author")
 
         // WHEN - Adding the quote
-        quoteDataSource.addQuote(newQuote)
+        quoteRepository.addQuote(newQuote)
         quotes.add(newQuote)
 
         // THEN - The quote has been added
-        val list = quoteDataSource.readAll()
+        val list = quoteRepository.getAll()
         assertThat(list.size, `is`(quotes.size))
     }
 
@@ -48,11 +56,11 @@ class QuoteRepositoryTest {
         val newQuote = Quote("1", "Quote", "Author")
 
         // WHEN - Adding the quote
-        quoteDataSource.updateQuote(newQuote)
+        quoteRepository.updateQuote(newQuote)
         quotes.add(newQuote)
 
         // THEN - The quote has been added
-        val list = quoteDataSource.readAll()
+        val list = quoteRepository.getAll()
         assertThat(list.size, `is`(quotes.size))
     }
 
@@ -60,7 +68,7 @@ class QuoteRepositoryTest {
     @Test
     fun getFavorites() = runBlockingTest {
         // WHEN - List of favorites
-        val favorites = quoteDataSource.readFavorites()
+        val favorites = quoteRepository.getFavorites()
 
         // THEN
         assertNotNull(favorites)
@@ -69,7 +77,7 @@ class QuoteRepositoryTest {
     @Test
     fun getAll() = runBlockingTest {
         // WHEN - List of quotes
-        val quotes = quoteDataSource.readFavorites()
+        val quotes = quoteRepository.getFavorites()
 
         // THEN
         assertNotNull(quotes)
@@ -82,11 +90,11 @@ class QuoteRepositoryTest {
         val newQuote = Quote("1", "QuoteFav", "Author")
 
         // WHEN - Adding the quote
-        quoteDataSource.addQuote(newQuote)
-        quoteDataSource.updateQuote(newQuote)
+        quoteRepository.addQuote(newQuote)
+        quoteRepository.updateQuote(newQuote)
 
         // THEN - The quote has been added
-        val list = quoteDataSource.readAll()
+        val list = quoteRepository.getAll()
         assertThat(list.size, `is`(quotes.size))
     }
 }

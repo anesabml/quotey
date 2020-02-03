@@ -52,8 +52,6 @@ class MainFragment : Fragment() {
 
         setupObservers()
 
-//        val notificationManager = NotificationManger(context!!)
-//        notificationManager.showQodNotification(Quote.Empty)
     }
 
     private fun setupObservers() {

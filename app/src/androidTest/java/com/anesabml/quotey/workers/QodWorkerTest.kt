@@ -1,4 +1,4 @@
-package com.anesabml.quotey
+package com.anesabml.quotey.workers
 
 import android.content.Context
 import androidx.test.core.app.ApplicationProvider

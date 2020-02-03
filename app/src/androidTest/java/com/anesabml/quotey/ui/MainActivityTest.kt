@@ -1,4 +1,4 @@
-package com.anesabml.quotey
+package com.anesabml.quotey.ui
 
 import android.widget.TextView
 import androidx.test.espresso.Espresso.onView
@@ -6,7 +6,7 @@ import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import androidx.test.rule.ActivityTestRule
-import com.anesabml.quotey.ui.MainActivity
+import com.anesabml.quotey.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.hamcrest.CoreMatchers.`is`
 import org.junit.Assert.assertThat
@@ -24,12 +24,16 @@ class MainActivityTest {
     @get: Rule
     val activityTestRule = ActivityTestRule(MainActivity::class.java)
 
-    private var bottomNavigation: BottomNavigationView? = null
+    private lateinit var bottomNavigation: BottomNavigationView
+    private val mockedListener =
+        mock(BottomNavigationView.OnNavigationItemSelectedListener::class.java)
 
     @Before
     fun setup() {
         bottomNavigation =
             activityTestRule.activity.findViewById(R.id.bottom_nav_view)
+
+        bottomNavigation.setOnNavigationItemSelectedListener(mockedListener)
     }
 
     @Test
@@ -37,31 +41,27 @@ class MainActivityTest {
         onView(withId(R.id.bottom_nav_view))
             .check(matches(isDisplayed()))
 
-        val menuItems = bottomNavigation!!.menu
+        val menuItems = bottomNavigation.menu
         assertThat(3, `is`(menuItems.size()))
 
     }
 
     @Test
     fun test_isFavoriteFragmentDisplayed() {
-        val menuItems = bottomNavigation!!.menu
-
-        val mockedListener = mock(BottomNavigationView.OnNavigationItemSelectedListener::class.java)
-        bottomNavigation!!.setOnNavigationItemSelectedListener(mockedListener)
+        val menuItems = bottomNavigation.menu
 
         `when`(mockedListener.onNavigationItemSelected(menuItems.findItem(R.id.favorites)))
             .thenReturn(true)
 
-        onView(withId(R.id.title)).check(matches(withText(R.string.favorites)))
+        onView(withId(R.id.title)).check(matches(withText(
+            R.string.favorites
+        )))
 
     }
 
     @Test
     fun test_isHomeFragmentDisplayed() {
-        val menuItems = bottomNavigation!!.menu
-
-        val mockedListener = mock(BottomNavigationView.OnNavigationItemSelectedListener::class.java)
-        bottomNavigation!!.setOnNavigationItemSelectedListener(mockedListener)
+        val menuItems = bottomNavigation.menu
 
         `when`(mockedListener.onNavigationItemSelected(menuItems.findItem(R.id.home)))
             .thenReturn(true)
@@ -72,16 +72,15 @@ class MainActivityTest {
 
     @Test
     fun test_isSettingsFragmentDisplayed() {
-        val menuItems = bottomNavigation!!.menu
-
-        val mockedListener = mock(BottomNavigationView.OnNavigationItemSelectedListener::class.java)
-        bottomNavigation!!.setOnNavigationItemSelectedListener(mockedListener)
+        val menuItems = bottomNavigation.menu
 
         `when`(mockedListener.onNavigationItemSelected(menuItems.findItem(R.id.settings)))
             .thenReturn(true)
 
         print(activityTestRule.activity.findViewById<TextView>(R.id.title).text)
-        onView(withId(R.id.title)).check(matches(withText(R.string.settings)))
+        onView(withId(R.id.title)).check(matches(withText(
+            R.string.settings
+        )))
 
     }
 
