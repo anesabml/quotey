@@ -8,7 +8,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 
 object ApiService {
 
-    private const val BASE_URL = "http://quotes.rest/"
+    private const val BASE_URL = "https://heroku-quotey.herokuapp.com/"
 
     private val logging = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
 

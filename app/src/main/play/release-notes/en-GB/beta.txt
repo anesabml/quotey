@@ -1,1 +1,2 @@
-Add progress to ui.
+- Fix getting quote.
+- Now you get a random quote every time you open the app.

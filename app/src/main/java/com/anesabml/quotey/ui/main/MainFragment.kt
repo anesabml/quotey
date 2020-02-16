@@ -93,8 +93,10 @@ class MainFragment : Fragment() {
         binding.quote.text = "\"${quote.quote}\""
         binding.author.text = quote.author
 
+        binding.addToFavoriteButton.visibility = View.VISIBLE
+
         // Load the background
-        Glide.with(context!!)
+        /*Glide.with(context!!)
             .load(quote.background)
             .addListener(object : RequestListener<Drawable> {
                 override fun onLoadFailed(
@@ -121,13 +123,12 @@ class MainFragment : Fragment() {
                 }
 
             })
-            .into(binding.quoteImage)
+            .into(binding.quoteImage)*/
 
-        binding.addToFavoriteButton.visibility = View.VISIBLE
     }
 
 
-    private fun bindFavIcon(bitmap: Bitmap) {
+    /*private fun bindFavIcon(bitmap: Bitmap) {
         val iconSize = binding.addToFavoriteButton.width
 
         Palette.from(bitmap)
@@ -181,6 +182,6 @@ class MainFragment : Fragment() {
                     binding.author.setTextColor(Color.BLACK)
                 }
             }
-    }
+    }*/
 
 }

@@ -43,7 +43,7 @@ class MyNotificationManager(private val context: Context) {
         val builder = NotificationCompat.Builder(context, quoteChannelId)
             .setSmallIcon(R.drawable.ic_notification_icon)
             .setContentTitle(context.getString(R.string.quote_of_the_day))
-            .setContentText(quote.title)
+            .setContentText(quote.quote)
             .setStyle(
                 NotificationCompat.BigTextStyle()
                     .bigText(quote.quote)

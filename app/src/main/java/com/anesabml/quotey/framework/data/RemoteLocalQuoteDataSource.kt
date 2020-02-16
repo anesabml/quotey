@@ -18,9 +18,9 @@ class RemoteLocalQuoteDataSource(context: Context) : IQuoteDataSource {
                 id = quote.id,
                 quote = quote.quote,
                 author = quote.author,
-                background = quote.background,
-                category = quote.category,
-                title = quote.title,
+//                background = quote.background,
+//                category = quote.category,
+//                title = quote.title,
                 length = quote.length
             )
         )
@@ -32,16 +32,16 @@ class RemoteLocalQuoteDataSource(context: Context) : IQuoteDataSource {
                 id = quote.id,
                 quote = quote.quote,
                 author = quote.author,
-                background = quote.background,
-                category = quote.category,
-                title = quote.title,
+//                background = quote.background,
+//                category = quote.category,
+//                title = quote.title,
                 length = quote.length,
                 isFavorite = quote.isFavorite
             )
         )
 
     override suspend fun getQod() =
-        api.getRandomQuote().body()?.contents?.quotes?.firstOrNull() ?: Quote.Empty
+        api.getRandomQuote().body() ?: Quote.Empty
 
 
     override suspend fun readFavorites() =
@@ -50,9 +50,9 @@ class RemoteLocalQuoteDataSource(context: Context) : IQuoteDataSource {
                 id = it.id,
                 quote = it.quote,
                 author = it.author,
-                background = it.background,
-                category = it.category,
-                title = it.title,
+//                background = it.background,
+//                category = it.category,
+//                title = it.title,
                 length = it.length
             )
 
@@ -64,9 +64,9 @@ class RemoteLocalQuoteDataSource(context: Context) : IQuoteDataSource {
                 id = it.id,
                 quote = it.quote,
                 author = it.author,
-                background = it.background,
-                category = it.category,
-                title = it.title,
+//                background = it.background,
+//                category = it.category,
+//                title = it.title,
                 length = it.length
             )
         }
