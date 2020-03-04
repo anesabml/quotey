@@ -18,8 +18,8 @@ android {
         applicationId "com.anesabml.quotey"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 8
-        versionName "1.8"
+        versionCode 9
+        versionName "1.9"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     dataBinding {
@@ -27,10 +27,17 @@ android {
     }
     signingConfigs {
         release {
-            storeFile file('quotey')
-            storePassword 'quotey'
-            keyAlias = 'key'
-            keyPassword 'key_quotey'
+            try {
+                def localProperties = new Properties()
+                localProperties.load(new FileInputStream(rootProject.file("local.properties")))
+                storeFile file('quotey')
+                storePassword localProperties['KEYSTORE_PASSWORD']
+                keyAlias localProperties['KEY_ALIAS']
+                keyPassword localProperties['KEY_PASSWORD']
+            }
+            catch (ex) {
+                throw new InvalidUserDataException("You should define KEYSTORE_PASSWORD and KEY_PASSWORD in local.properties.")
+            }
         }
     }
     buildTypes {
