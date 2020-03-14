@@ -30,9 +30,9 @@ class MainViewModelTest {
     @Before
     fun setupViewModel() {
         val quotes = mutableListOf(
-            Quote("1", "Quote", "Author"),
-            Quote("1", "Quote", "Author"),
-            Quote("1", "Quote", "Author")
+            Quote(1, "Quote", "Author", 10),
+            Quote(1, "Quote", "Author", 10),
+            Quote(1, "Quote", "Author", 10)
         )
 
         val quoteDataSource = FakeQuoteDataSource(quotes)

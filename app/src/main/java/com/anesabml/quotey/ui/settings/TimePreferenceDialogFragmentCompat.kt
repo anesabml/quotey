@@ -22,6 +22,7 @@ class TimePreferenceDialogFragmentCompat : PreferenceDialogFragmentCompat() {
             }
     }
 
+    @Suppress("DEPRECATION")
     override fun onBindDialogView(view: View) {
         super.onBindDialogView(view)
 
@@ -52,6 +53,7 @@ class TimePreferenceDialogFragmentCompat : PreferenceDialogFragmentCompat() {
         }
     }
 
+    @Suppress("DEPRECATION")
     override fun onDialogClosed(positiveResult: Boolean) {
         if (positiveResult) {
             // generate value to save

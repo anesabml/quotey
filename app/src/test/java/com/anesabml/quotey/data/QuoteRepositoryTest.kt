@@ -15,9 +15,9 @@ import org.junit.Test
 class QuoteRepositoryTest {
 
     private val quotes = mutableListOf(
-        Quote("1", "Quote", "Author"),
-        Quote("1", "Quote", "Author"),
-        Quote("1", "Quote", "Author")
+        Quote(1, "Quote", "Author", 10),
+        Quote(1, "Quote", "Author", 10),
+        Quote(1, "Quote", "Author", 10)
     )
 
     private lateinit var quoteRepository: QuoteRepository
@@ -38,7 +38,7 @@ class QuoteRepositoryTest {
     @Test
     fun addQuote() = runBlockingTest {
         // GIVEN - New Quote
-        val newQuote = Quote("1", "Quote", "Author")
+        val newQuote = Quote(1, "Quote", "Author", 10)
 
         // WHEN - Adding the quote
         quoteRepository.addQuote(newQuote)
@@ -53,7 +53,7 @@ class QuoteRepositoryTest {
     @Test
     fun addToFavorites() = runBlockingTest {
         // GIVEN - New Quote
-        val newQuote = Quote("1", "Quote", "Author")
+        val newQuote = Quote(1, "Quote", "Author", 10)
 
         // WHEN - Adding the quote
         quoteRepository.updateQuote(newQuote)
@@ -87,7 +87,7 @@ class QuoteRepositoryTest {
     @Test
     fun removeFromFavorites() = runBlockingTest {
         // GIVEN - New Quote
-        val newQuote = Quote("1", "QuoteFav", "Author")
+        val newQuote = Quote(1, "Quote", "Author", 10)
 
         // WHEN - Adding the quote
         quoteRepository.addQuote(newQuote)

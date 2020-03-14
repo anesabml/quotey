@@ -11,8 +11,6 @@ import androidx.core.graphics.ColorUtils
 import androidx.core.math.MathUtils
 import androidx.palette.graphics.Palette
 import androidx.palette.graphics.Palette.Swatch
-import java.lang.annotation.Retention
-import java.lang.annotation.RetentionPolicy
 
 
 /**
@@ -122,15 +120,15 @@ object ColorUtils {
         isDark: Boolean,
         @FloatRange(from = 0.0, to = 1.0) lightnessMultiplier: Float
     ): Int {
-        var lightnessMultiplier = lightnessMultiplier
+        var lightnessMultiplierCopy = lightnessMultiplier
         val hsl = FloatArray(3)
         ColorUtils.colorToHSL(color, hsl)
         if (!isDark) {
-            lightnessMultiplier += 1f
+            lightnessMultiplierCopy += 1f
         } else {
-            lightnessMultiplier = 1f - lightnessMultiplier
+            lightnessMultiplierCopy = 1f - lightnessMultiplierCopy
         }
-        hsl[2] = MathUtils.clamp(hsl[2] * lightnessMultiplier, 0f, 1f)
+        hsl[2] = MathUtils.clamp(hsl[2] * lightnessMultiplierCopy, 0f, 1f)
         return ColorUtils.HSLToColor(hsl)
     }
 
@@ -167,7 +165,7 @@ object ColorUtils {
                 and Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES
     }
 
-    @Retention(RetentionPolicy.SOURCE)
+    @kotlin.annotation.Retention(AnnotationRetention.SOURCE)
     @IntDef(IS_LIGHT, IS_DARK, LIGHTNESS_UNKNOWN)
     annotation class Lightness
 }
