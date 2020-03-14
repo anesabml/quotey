@@ -12,3 +12,7 @@
 /captures
 .externalNativeBuild
 .cxx
+app/private_key.pepk
+app/quotey
+app/quotey_service_account_key.json
+app/upload_certificate.pem
