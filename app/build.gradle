@@ -55,6 +55,11 @@ android {
 //        serviceAccountEmail = "quotey-service-account@api-8239268893241158549-612623.iam.gserviceaccount.com"
         serviceAccountCredentials = file("quotey_service_account_key.json")
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
