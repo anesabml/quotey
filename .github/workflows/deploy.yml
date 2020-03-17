@@ -17,6 +17,11 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
+    - name: Run fastlane setup
+      env:
+        SERVICE_ACCOUNT: ${{ secrets.SERIVCE_ACCOUNT_JSON }}
+      run: |
+        fastlane setup --verbose
     - name: Fastlane Action
       uses: maierj/fastlane-action@v1.4.0
       with:
