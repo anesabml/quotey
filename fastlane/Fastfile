@@ -24,13 +24,14 @@ platform :android do
 
   desc "Deploy a new version to the Google Play"
   lane :deploy do
-    gradle(
+      gradle(task: "clean")
+      gradle(
         task: 'bundle',
         build_type: 'Release'
       )
     upload_to_play_store(
-        track: 'beta',
-        json_key_data: ${{ secrets.SERIVCE_ACCOUNT_JSON }}
+        track: 'beta'
+        #json_key_data: ${{ secrets.SERIVCE_ACCOUNT_JSON }}
       )
   end
 end
