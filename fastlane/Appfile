@@ -1,2 +1,2 @@
-json_key_file("app/quotey_service_account_key.json") # Path to the json secret file - Follow https://docs.fastlane.tools/actions/supply/#setup to get one
+json_key_file("app/service_account_key.json") # Path to the json secret file - Follow https://docs.fastlane.tools/actions/supply/#setup to get one
 package_name("com.anesabml.quotey") # e.g. com.krausefx.app

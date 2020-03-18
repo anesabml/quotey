@@ -53,7 +53,7 @@ android {
         defaultToAppBundles = true
         track = 'beta' // 'internal', 'alpha','beta' or 'production'
 //        serviceAccountEmail = "quotey-service-account@api-8239268893241158549-612623.iam.gserviceaccount.com"
-        serviceAccountCredentials = file("quotey_service_account_key.json")
+        serviceAccountCredentials = file("service_account_key.json")
     }
 
     compileOptions {
