@@ -24,7 +24,6 @@ platform :android do
 
   desc "Deploy a new version to the Google Play"
   lane :deploy do
-      gradle(task: "clean")
       gradle(
         task: 'bundle',
         build_type: 'Release'
