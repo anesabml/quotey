@@ -19,9 +19,10 @@ jobs:
         uses: timheuer/base64-to-file@v1.0.3
         with:
           # Name of the file when written to temp location
-          fileName: app/keystore.jks
+          fileName: keystore.jks
           # The base64 encoded string
           encodedString: ${{ secrets.KEY_JKS }}
+          working-directory: ./app
       - name: Fastlane Action
         uses: maierj/fastlane-action@v1.4.0
         with:
