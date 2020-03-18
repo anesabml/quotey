@@ -24,3 +24,7 @@ jobs:
         lane: deploy
       env:
         SERVICE_ACCOUNT: ${{ secrets.SERIVCE_ACCOUNT_JSON }}
+        KEY_JKS: ${{ secrets.KEY_JKS }}
+        KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+        KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+        KEY_ALIAS_PASSWORD: ${{ secrets.KEY_ALIAS_PASSWORD }}
