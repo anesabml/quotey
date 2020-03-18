@@ -28,10 +28,10 @@ platform :android do
         task: 'bundle',
         build_type: 'Release',
         properties: {
-          "android.injected.signing.store.file" => keystore.jks,
-          "android.injected.signing.store.password" => ENV[KEY_PASSWORD],
-          "android.injected.signing.key.alias" => ENV[KEY_ALIAS],
-          "android.injected.signing.key.password" => ENV[KEY_ALIAS_PASSWORD]
+          "android.injected.signing.store.file" => "keystore.jks",
+          "android.injected.signing.store.password" => ENV['KEY_PASSWORD'],
+          "android.injected.signing.key.alias" => ENV['KEY_ALIAS'],
+          "android.injected.signing.key.password" => ENV['KEY_ALIAS_PASSWORD']
         }
       )
 

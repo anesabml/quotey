@@ -24,21 +24,21 @@ android {
     dataBinding {
         enabled = true
     }
-    signingConfigs {
-        release {
-            try {
-                def localProperties = new Properties()
-                localProperties.load(new FileInputStream(rootProject.file("local.properties")))
-                storeFile file('quotey')
-                storePassword localProperties['KEYSTORE_PASSWORD']
-                keyAlias localProperties['KEY_ALIAS']
-                keyPassword localProperties['KEY_PASSWORD']
-            }
-            catch (ex) {
-                throw new InvalidUserDataException("You should define KEYSTORE_PASSWORD and KEY_PASSWORD in local.properties.")
-            }
-        }
-    }
+//    signingConfigs {
+//        release {
+//            try {
+//                def localProperties = new Properties()
+//                localProperties.load(new FileInputStream(rootProject.file("local.properties")))
+//                storeFile file('quotey')
+//                storePassword localProperties['KEYSTORE_PASSWORD']
+//                keyAlias localProperties['KEY_ALIAS']
+//                keyPassword localProperties['KEY_PASSWORD']
+//            }
+//            catch (ex) {
+//                throw new InvalidUserDataException("You should define KEYSTORE_PASSWORD and KEY_PASSWORD in local.properties.")
+//            }
+//        }
+//    }
     buildTypes {
         release {
             minifyEnabled true
@@ -52,7 +52,6 @@ android {
     play {
         defaultToAppBundles = true
         track = 'beta' // 'internal', 'alpha','beta' or 'production'
-//        serviceAccountEmail = "quotey-service-account@api-8239268893241158549-612623.iam.gserviceaccount.com"
         serviceAccountCredentials = file("service_account_key.json")
     }
 
@@ -72,7 +71,6 @@ dependencies {
     implementation Libraries.appCompat
     implementation Libraries.coreKtx
     implementation Libraries.constraintlayout
-//    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation Libraries.recyclerView
     implementation Libraries.preference
     implementation Libraries.palette
