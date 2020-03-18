@@ -29,9 +29,10 @@ platform :android do
         task: 'bundle',
         build_type: 'Release'
       )
-    upload_to_play_store(
-        track: 'beta'
-        #json_key_data: ${{ secrets.SERIVCE_ACCOUNT_JSON }}
+
+      upload_to_play_store(
+        track: 'beta',
+        json_key_data: ENV[SERVICE_ACCOUNT]
       )
   end
 end
