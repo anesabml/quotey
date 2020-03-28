@@ -1,1 +1,5 @@
 /build
+service_account_key.json
+upload_certificate.pem
+quotey_keystore
+private_key.pepk

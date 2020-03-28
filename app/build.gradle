@@ -14,7 +14,7 @@ android {
     }
     compileSdkVersion Versions.compileSdk
     defaultConfig {
-        applicationId "com.anesabml.quotey"
+        applicationId "com.anesabml.quotey_keystore"
         minSdkVersion Versions.minSdk
         targetSdkVersion Versions.targetSdk
         versionCode Releases.versionCode
@@ -26,16 +26,23 @@ android {
     }
     signingConfigs {
         release {
-            storeFile file('quotey.jks')
-            storePassword System.getenv('KEY_PASSWORD')
-            keyAlias System.getenv('KEY_ALIAS')
-            keyPassword System.getenv('KEY_PASSWORD')
+            try {
+                def localProperties = new Properties()
+                localProperties.load(new FileInputStream(rootProject.file("local.properties")))
+                storeFile file('quotey_keystore')
+                storePassword localProperties['KEYSTORE_PASSWORD']
+                keyAlias localProperties['KEY_ALIAS']
+                keyPassword localProperties['KEY_PASSWORD']
+            }
+            catch (ex) {
+                throw new InvalidUserDataException("You should define KEYSTORE_PASSWORD and KEY_PASSWORD in local.properties.")
+            }
         }
     }
     buildTypes {
         release {
-            minifyEnabled true
-            shrinkResources true
+            minifyEnabled false
+//            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
             multiDexEnabled = true
@@ -123,7 +130,6 @@ dependencies {
 
     androidTestImplementation TestLibraries.androidTestRunner
     androidTestImplementation TestLibraries.androidTestRules
-
 
     androidTestImplementation TestLibraries.junitKtx
     androidTestImplementation TestLibraries.truth

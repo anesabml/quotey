@@ -26,18 +26,11 @@ platform :android do
   lane :deploy do
       gradle(
         task: 'bundle',
-        build_type: 'Release',
-        properties: {
-          "android.injected.signing.store.file" => "quotey.jks",
-          "android.injected.signing.store.password" => ENV['KEY_PASSWORD'],
-          "android.injected.signing.key.alias" => ENV['KEY_ALIAS'],
-          "android.injected.signing.key.password" => ENV['KEY_ALIAS_PASSWORD']
-        }
+        build_type: 'Release'
       )
 
       upload_to_play_store(
-        track: 'beta',
-        json_key_data: ENV[SERVICE_ACCOUNT]
+        track: 'beta'
       )
   end
 end

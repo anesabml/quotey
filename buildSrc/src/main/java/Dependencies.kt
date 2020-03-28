@@ -59,6 +59,7 @@ object Libraries {
 
     val lifecycleViewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
     val lifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycle}"
+
     // KOIN
     val koin = "org.koin:koin-android:${Versions.koin}"
     val koinScope = "org.koin:koin-androidx-scope:${Versions.koin}"
