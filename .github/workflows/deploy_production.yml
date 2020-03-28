@@ -14,12 +14,12 @@ jobs:
         with:
           java-version: 1.8
       - name: Build with Gradle
-        run: ./gradlew bundleRelease
+        run: ./gradlew bundleRelease --stacktrace
       - name: Sign Android release
         uses: r0adkll/sign-android-release@v1
         with:
           # The directory to find your release to sign
-          releaseDirectory: /app/build/outputs/bundle/release
+          releaseDirectory: app/build/outputs/bundle/release
           signingKeyBase64: ${{ secrets.SIGNING_KEY }}
           alias: ${{ secrets.ALIAS }}
           keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
