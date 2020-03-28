@@ -14,7 +14,7 @@ abstract class QuoteyDatabase : RoomDatabase() {
 
   companion object {
 
-    private const val DATABASE_NAME = "quotey_keystore.db"
+    private const val DATABASE_NAME = "quotey.db"
 
     private var instance: QuoteyDatabase? = null
 
