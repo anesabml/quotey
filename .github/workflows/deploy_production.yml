@@ -29,6 +29,6 @@ jobs:
         with:
           serviceAccountJsonPlainText: ${{ secrets.SERIVCE_ACCOUNT_JSON }}
           packageName: com.anesabml.quotey
-          releaseFile: app/build/outputs/bundle/release/app-release.abb
+          releaseFile: app/build/outputs/bundle/release/app-release.aab
           track: beta
           # whatsNewDirectory: # optional
