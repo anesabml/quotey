@@ -3,7 +3,7 @@ package com.anesabml.quotey.framework.workers
 import android.content.Context
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
-import com.anesabml.quotey.core.data.QuoteRepository
+import com.anesabml.quotey.framework.data.QuoteRepository
 import com.anesabml.quotey.framework.data.RemoteLocalQuoteDataSource
 import com.anesabml.quotey.framework.managers.MyNotificationManager
 import com.anesabml.quotey.framework.utils.WorkerUtils

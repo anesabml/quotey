@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.anesabml.quotey.core.domain.Quote
+import com.anesabml.quotey.core.domain.model.Quote
 import com.anesabml.quotey.databinding.ItemQuoteBinding
 
 

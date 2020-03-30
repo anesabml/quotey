@@ -1,6 +1,6 @@
 package com.anesabml.quotey.core.data
 
-import com.anesabml.quotey.core.domain.Quote
+import com.anesabml.quotey.core.domain.model.Quote
 
 interface IQuoteDataSource {
     suspend fun getQod(): Quote

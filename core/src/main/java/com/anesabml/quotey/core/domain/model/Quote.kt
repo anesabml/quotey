@@ -1,4 +1,4 @@
-package com.anesabml.quotey.core.domain
+package com.anesabml.quotey.core.domain.model
 
 data class Quote(
     val id: Int,

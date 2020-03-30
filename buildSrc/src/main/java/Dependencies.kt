@@ -1,7 +1,7 @@
 
 object Releases {
-    val versionCode = 23
-    val versionName = "2.3"
+    val versionCode = 24
+    val versionName = "2.4"
 }
 
 object Versions {

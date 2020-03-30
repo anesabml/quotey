@@ -1,6 +1,6 @@
 package com.anesabml.quotey.framework.api
 
-import com.anesabml.quotey.core.domain.Quote
+import com.anesabml.quotey.core.domain.model.Quote
 import retrofit2.Response
 import retrofit2.http.GET
 

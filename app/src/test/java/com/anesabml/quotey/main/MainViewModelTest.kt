@@ -2,9 +2,9 @@ package com.anesabml.quotey.main
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.anesabml.quotey.core.data.QuoteRepository
-import com.anesabml.quotey.core.domain.Quote
-import com.anesabml.quotey.core.interactors.*
+import com.anesabml.quotey.framework.data.QuoteRepository
+import com.anesabml.quotey.core.domain.model.Quote
+import com.anesabml.quotey.core.domain.usecase.*
 import com.anesabml.quotey.framework.FakeQuoteDataSource
 import com.anesabml.quotey.framework.Interactors
 import com.anesabml.quotey.getOrAwaitValue
@@ -30,13 +30,24 @@ class MainViewModelTest {
     @Before
     fun setupViewModel() {
         val quotes = mutableListOf(
-            Quote(1, "Quote", "Author", 10),
-            Quote(1, "Quote", "Author", 10),
+            Quote(
+                1,
+                "Quote",
+                "Author",
+                10
+            ),
+            Quote(
+                1,
+                "Quote",
+                "Author",
+                10
+            ),
             Quote(1, "Quote", "Author", 10)
         )
 
         val quoteDataSource = FakeQuoteDataSource(quotes)
-        val repository = QuoteRepository(quoteDataSource)
+        val repository =
+            QuoteRepository(quoteDataSource)
         interactors = Interactors(
             GetRandomQuote(repository),
             AddQuote(repository),

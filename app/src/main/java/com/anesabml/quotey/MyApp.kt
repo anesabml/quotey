@@ -6,8 +6,8 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.PreferenceManager
 import com.anesabml.quotey.core.data.IQuoteDataSource
 import com.anesabml.quotey.core.data.IQuoteRepository
-import com.anesabml.quotey.core.data.QuoteRepository
-import com.anesabml.quotey.core.interactors.*
+import com.anesabml.quotey.framework.data.QuoteRepository
+import com.anesabml.quotey.core.domain.usecase.*
 import com.anesabml.quotey.framework.Interactors
 import com.anesabml.quotey.framework.data.RemoteLocalQuoteDataSource
 import com.anesabml.quotey.ui.favorites.FavoriteQuotesViewModel
@@ -34,7 +34,11 @@ class MyApp : Application() {
                     this@MyApp
                 )
             }
-            single<IQuoteRepository> { QuoteRepository(get()) }
+            single<IQuoteRepository> {
+                QuoteRepository(
+                    get()
+                )
+            }
 
             single {
                 Interactors(

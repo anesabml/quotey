@@ -1,7 +1,7 @@
 package com.anesabml.quotey.data
 
-import com.anesabml.quotey.core.data.QuoteRepository
-import com.anesabml.quotey.core.domain.Quote
+import com.anesabml.quotey.framework.data.QuoteRepository
+import com.anesabml.quotey.core.domain.model.Quote
 import com.anesabml.quotey.framework.FakeQuoteDataSource
 import junit.framework.Assert.assertNotNull
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -25,7 +25,8 @@ class QuoteRepositoryTest {
     @Before
     fun init() {
         val quoteDataSource = FakeQuoteDataSource(quotes)
-        quoteRepository = QuoteRepository(quoteDataSource)
+        quoteRepository =
+            QuoteRepository(quoteDataSource)
     }
 
     @Test
@@ -38,7 +39,8 @@ class QuoteRepositoryTest {
     @Test
     fun addQuote() = runBlockingTest {
         // GIVEN - New Quote
-        val newQuote = Quote(1, "Quote", "Author", 10)
+        val newQuote =
+            Quote(1, "Quote", "Author", 10)
 
         // WHEN - Adding the quote
         quoteRepository.addQuote(newQuote)
@@ -53,7 +55,8 @@ class QuoteRepositoryTest {
     @Test
     fun addToFavorites() = runBlockingTest {
         // GIVEN - New Quote
-        val newQuote = Quote(1, "Quote", "Author", 10)
+        val newQuote =
+            Quote(1, "Quote", "Author", 10)
 
         // WHEN - Adding the quote
         quoteRepository.updateQuote(newQuote)
@@ -87,7 +90,8 @@ class QuoteRepositoryTest {
     @Test
     fun removeFromFavorites() = runBlockingTest {
         // GIVEN - New Quote
-        val newQuote = Quote(1, "Quote", "Author", 10)
+        val newQuote =
+            Quote(1, "Quote", "Author", 10)
 
         // WHEN - Adding the quote
         quoteRepository.addQuote(newQuote)

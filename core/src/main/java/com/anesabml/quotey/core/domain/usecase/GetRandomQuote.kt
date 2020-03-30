@@ -1,4 +1,4 @@
-package com.anesabml.quotey.core.interactors
+package com.anesabml.quotey.core.domain.usecase
 
 import com.anesabml.quotey.core.data.IQuoteRepository
 

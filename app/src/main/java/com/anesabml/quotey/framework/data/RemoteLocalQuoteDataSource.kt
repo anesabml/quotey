@@ -2,7 +2,7 @@ package com.anesabml.quotey.framework.data
 
 import android.content.Context
 import com.anesabml.quotey.core.data.IQuoteDataSource
-import com.anesabml.quotey.core.domain.Quote
+import com.anesabml.quotey.core.domain.model.Quote
 import com.anesabml.quotey.framework.api.ApiService
 import com.anesabml.quotey.framework.db.QuoteEntity
 import com.anesabml.quotey.framework.db.QuoteyDatabase

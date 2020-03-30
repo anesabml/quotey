@@ -10,7 +10,7 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.anesabml.quotey.ui.MainActivity
 import com.anesabml.quotey.R
-import com.anesabml.quotey.core.domain.Quote
+import com.anesabml.quotey.core.domain.model.Quote
 
 class MyNotificationManager(private val context: Context) {
 

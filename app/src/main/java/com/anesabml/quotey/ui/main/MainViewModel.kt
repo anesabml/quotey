@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.viewModelScope
 import com.anesabml.quotey.R
-import com.anesabml.quotey.core.domain.Quote
+import com.anesabml.quotey.core.domain.model.Quote
 import com.anesabml.quotey.framework.Interactors
 import com.anesabml.quotey.ui.QuoteyViewModel
 import kotlinx.coroutines.launch
