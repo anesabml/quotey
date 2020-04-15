@@ -5,7 +5,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.anesabml.quotey.data.QuoteRepository
 import com.anesabml.quotey.domain.model.Quote
 import com.anesabml.quotey.domain.usecase.*
-import com.anesabml.quotey.framework.FakeQuoteDataSource
+import com.anesabml.quotey.data.FakeQuoteDataSource
 import com.anesabml.quotey.domain.Interactors
 import com.anesabml.quotey.getOrAwaitValue
 import com.anesabml.quotey.ui.main.MainViewModel
@@ -45,7 +45,8 @@ class MainViewModelTest {
             Quote(1, "Quote", "Author", 10)
         )
 
-        val quoteDataSource = FakeQuoteDataSource(quotes)
+        val quoteDataSource =
+            FakeQuoteDataSource(quotes)
         val repository =
             QuoteRepository(quoteDataSource)
         interactors = Interactors(

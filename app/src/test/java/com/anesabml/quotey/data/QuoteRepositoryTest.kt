@@ -1,7 +1,6 @@
 package com.anesabml.quotey.data
 
 import com.anesabml.quotey.domain.model.Quote
-import com.anesabml.quotey.framework.FakeQuoteDataSource
 import junit.framework.Assert.assertNotNull
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
@@ -23,7 +22,8 @@ class QuoteRepositoryTest {
 
     @Before
     fun init() {
-        val quoteDataSource = FakeQuoteDataSource(quotes)
+        val quoteDataSource =
+            FakeQuoteDataSource(quotes)
         quoteRepository =
             QuoteRepository(quoteDataSource)
     }
@@ -52,7 +52,7 @@ class QuoteRepositoryTest {
 
 
     @Test
-    fun addToFavorites() = runBlockingTest {
+    fun updateQuote() = runBlockingTest {
         // GIVEN - New Quote
         val newQuote =
             Quote(1, "Quote", "Author", 10)
@@ -78,26 +78,10 @@ class QuoteRepositoryTest {
 
     @Test
     fun getAll() = runBlockingTest {
-        // WHEN - List of quotes
-        val quotes = quoteRepository.getFavorites()
+        // WHEN - List of favorites
+        val allQuotes = quoteRepository.getAll()
 
         // THEN
-        assertNotNull(quotes)
-    }
-
-
-    @Test
-    fun removeFromFavorites() = runBlockingTest {
-        // GIVEN - New Quote
-        val newQuote =
-            Quote(1, "Quote", "Author", 10)
-
-        // WHEN - Adding the quote
-        quoteRepository.addQuote(newQuote)
-        quoteRepository.updateQuote(newQuote)
-
-        // THEN - The quote has been added
-        val list = quoteRepository.getAll()
-        assertThat(list.size, `is`(quotes.size))
+        assertNotNull(allQuotes)
     }
 }
