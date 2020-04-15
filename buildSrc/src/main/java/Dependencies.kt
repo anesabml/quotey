@@ -37,10 +37,6 @@ object Versions {
     val mockito = "3.2.4"
 }
 
-object Modules {
-    val core = ":core"
-}
-
 object Libraries {
     // KOTLIN
     val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"

@@ -5,9 +5,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.anesabml.quotey.R
-import com.anesabml.quotey.core.domain.model.Quote
-import com.anesabml.quotey.framework.Interactors
-import com.anesabml.quotey.ui.QuoteyViewModel
+import com.anesabml.quotey.domain.model.Quote
+import com.anesabml.quotey.domain.Interactors
+import com.anesabml.quotey.ui.base.QuoteyViewModel
 import kotlinx.coroutines.launch
 
 class FavoriteQuotesViewModel(interactors: Interactors) :

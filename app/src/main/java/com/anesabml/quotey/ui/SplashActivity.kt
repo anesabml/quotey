@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import com.anesabml.quotey.R
+import com.anesabml.quotey.ui.main.MainActivity
 
 class SplashActivity : AppCompatActivity() {
 

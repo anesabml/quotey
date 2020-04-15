@@ -2,11 +2,11 @@ package com.anesabml.quotey.main
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.anesabml.quotey.framework.data.QuoteRepository
-import com.anesabml.quotey.core.domain.model.Quote
-import com.anesabml.quotey.core.domain.usecase.*
+import com.anesabml.quotey.data.QuoteRepository
+import com.anesabml.quotey.domain.model.Quote
+import com.anesabml.quotey.domain.usecase.*
 import com.anesabml.quotey.framework.FakeQuoteDataSource
-import com.anesabml.quotey.framework.Interactors
+import com.anesabml.quotey.domain.Interactors
 import com.anesabml.quotey.getOrAwaitValue
 import com.anesabml.quotey.ui.main.MainViewModel
 import org.hamcrest.core.Is.`is`

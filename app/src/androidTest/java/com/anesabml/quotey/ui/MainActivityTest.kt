@@ -7,6 +7,7 @@ import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import androidx.test.rule.ActivityTestRule
 import com.anesabml.quotey.R
+import com.anesabml.quotey.ui.main.MainActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.hamcrest.CoreMatchers.`is`
 import org.junit.Assert.assertThat

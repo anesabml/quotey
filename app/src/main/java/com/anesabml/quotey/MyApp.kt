@@ -4,12 +4,14 @@ import android.app.Application
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.PreferenceManager
-import com.anesabml.quotey.core.data.IQuoteDataSource
-import com.anesabml.quotey.core.data.IQuoteRepository
-import com.anesabml.quotey.framework.data.QuoteRepository
-import com.anesabml.quotey.core.domain.usecase.*
-import com.anesabml.quotey.framework.Interactors
-import com.anesabml.quotey.framework.data.RemoteLocalQuoteDataSource
+import com.anesabml.quotey.data.IQuoteDataSource
+import com.anesabml.quotey.data.IQuoteRepository
+import com.anesabml.quotey.data.QuoteRepository
+import com.anesabml.quotey.domain.usecase.*
+import com.anesabml.quotey.data.QuoteDataSource
+import com.anesabml.quotey.data.api.ApiService
+import com.anesabml.quotey.data.db.QuoteyDatabase
+import com.anesabml.quotey.domain.Interactors
 import com.anesabml.quotey.ui.favorites.FavoriteQuotesViewModel
 import com.anesabml.quotey.ui.main.MainViewModel
 import org.koin.android.ext.koin.androidContext
@@ -29,9 +31,19 @@ class MyApp : Application() {
 
     private fun setupDI() {
         val myModule = module {
+
+            single {
+                QuoteyDatabase.getInstance(this@MyApp)
+            }
+
+            single {
+                ApiService
+            }
+
             single<IQuoteDataSource> {
-                RemoteLocalQuoteDataSource(
-                    this@MyApp
+                QuoteDataSource(
+                    get(),
+                    get()
                 )
             }
             single<IQuoteRepository> {

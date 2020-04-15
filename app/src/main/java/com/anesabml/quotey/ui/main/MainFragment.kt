@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.anesabml.quotey.R
-import com.anesabml.quotey.core.domain.model.Quote
+import com.anesabml.quotey.domain.model.Quote
 import com.anesabml.quotey.databinding.MainFragmentBinding
 import com.google.android.material.snackbar.Snackbar
 import org.koin.androidx.viewmodel.ext.android.viewModel
