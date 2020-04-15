@@ -38,11 +38,6 @@ class MainFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        setupObservers()
-
-    }
-
-    private fun setupObservers() {
         viewModel.quote.observe(viewLifecycleOwner, Observer {
             updateUi(it)
         })
@@ -67,9 +62,6 @@ class MainFragment : Fragment() {
             viewModel.getLastQuote()
             Snackbar.make(binding.root, it, Snackbar.LENGTH_SHORT).show()
         })
-
-
-        viewModel.start()
     }
 
     @SuppressLint("SetTextI18n")

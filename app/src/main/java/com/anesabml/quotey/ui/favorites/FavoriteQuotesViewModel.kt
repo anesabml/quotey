@@ -10,14 +10,18 @@ import com.anesabml.quotey.domain.Interactors
 import com.anesabml.quotey.ui.base.QuoteyViewModel
 import kotlinx.coroutines.launch
 
-class FavoriteQuotesViewModel(interactors: Interactors) :
-    QuoteyViewModel(interactors) {
+class FavoriteQuotesViewModel(private val interactors: Interactors) :
+    QuoteyViewModel() {
 
     private val _quotes = MutableLiveData<List<Quote>>()
     val quotes: LiveData<List<Quote>> = _quotes
 
     private val _errorText = MutableLiveData<Int>()
     val errorText: LiveData<Int> = _errorText
+
+    init {
+        getFavoritesQuotes()
+    }
 
     private fun getFavoritesQuotes() {
         viewModelScope.launch {
@@ -36,10 +40,4 @@ class FavoriteQuotesViewModel(interactors: Interactors) :
             isLoading.postValue(false)
         }
     }
-
-    fun start() {
-        getFavoritesQuotes()
-    }
-
-
 }

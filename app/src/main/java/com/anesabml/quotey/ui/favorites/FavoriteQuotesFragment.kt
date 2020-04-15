@@ -50,8 +50,6 @@ class FavoriteQuotesFragment : Fragment() {
                 binding.progressBar.hide()
             }
         })
-
-        viewModel.start()
     }
 
     companion object {
