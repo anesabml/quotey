@@ -1,7 +1,7 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
+apply plugin: "com.android.application"
+apply plugin: "kotlin-android"
+apply plugin: "kotlin-android-extensions"
+apply plugin: "kotlin-kapt"
 
 
 android {
@@ -22,10 +22,10 @@ android {
     //         try {
     //             def localProperties = new Properties()
     //             localProperties.load(new FileInputStream(rootProject.file("local.properties")))
-    //             storeFile file('quotey_keystore')
-    //             storePassword localProperties['KEYSTORE_PASSWORD']
-    //             keyAlias localProperties['KEY_ALIAS']
-    //             keyPassword localProperties['KEY_PASSWORD']
+    //             storeFile file("quotey_keystore")
+    //             storePassword localProperties["KEYSTORE_PASSWORD"]
+    //             keyAlias localProperties["KEY_ALIAS"]
+    //             keyPassword localProperties["KEY_PASSWORD"]
     //         }
     //         catch (ex) {
     //             throw new InvalidUserDataException("You should define KEYSTORE_PASSWORD and KEY_PASSWORD in local.properties.")
@@ -36,7 +36,7 @@ android {
         release {
             minifyEnabled false
             shrinkResources false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
             // signingConfig signingConfigs.release
             multiDexEnabled = true
         }
@@ -48,12 +48,12 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = "1.8"
     }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: "libs", include: ["*.jar"])
 
     implementation Libraries.kotlin
 

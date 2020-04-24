@@ -14,6 +14,7 @@ import com.anesabml.quotey.data.db.QuoteyDatabase
 import com.anesabml.quotey.domain.Interactors
 import com.anesabml.quotey.ui.favorites.FavoriteQuotesViewModel
 import com.anesabml.quotey.ui.main.MainViewModel
+import com.anesabml.quotey.utils.WorkerUtils
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.startKoin
@@ -27,6 +28,8 @@ class MyApp : Application() {
         setupDI()
 
         setupSharedPreferenceListener()
+
+        WorkerUtils.setupWork(this)
     }
 
     private fun setupDI() {

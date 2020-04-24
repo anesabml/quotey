@@ -1,13 +1,13 @@
 <resources>
     <!-- Reply Preference -->
     <string-array name="days_entries">
-        <item>@string/saturday</item>
         <item>@string/sunday</item>
         <item>@string/monday</item>
         <item>@string/tuesday</item>
         <item>@string/wednesday</item>
         <item>@string/thursday</item>
         <item>@string/friday</item>
+        <item>@string/saturday</item>
     </string-array>
 
     <string-array name="days_values">

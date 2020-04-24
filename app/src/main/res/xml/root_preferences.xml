@@ -14,7 +14,7 @@
         app:entryValues="@array/days_values"
         app:iconSpaceReserved="false"
         app:key="days"
-        app:defaultValue="@array/days_entries"
+        app:defaultValue="@array/days_values"
         app:summary="@string/days_summary"
         app:title="@string/days_title"
         app:useSimpleSummaryProvider="true" />
