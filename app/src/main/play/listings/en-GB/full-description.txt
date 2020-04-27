@@ -1,4 +1,0 @@
-Quotey is a simple app that sends you a random quote every day, with some key features:
-- The ability to add a quote to your favorite list.
-- The ability to customize  the time to recieve the quote.
-- And so much more....

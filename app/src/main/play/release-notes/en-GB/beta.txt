@@ -1,2 +1,0 @@
-- Fix getting quote.
-_ Bug fixes

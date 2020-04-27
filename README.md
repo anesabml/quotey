@@ -5,15 +5,22 @@ you can specify the date and also the days you want to receive the quote
 
 ## Screenshots
 
-![Splash Screen](metadata/Interface.png)
-![Home Screen](metadata/HomePage.png)
-![Favorites Screen](metadata/Favorites.png)
-![Setting Screen](metadata/Settings.png)
+<img src="metadata/Interface.png" alt="drawing" width="200"/>
+  
+<img src="metadata/HomePage.png" alt="drawing" width="200"/>
+  
+<img src="metadata/Favorites.png" alt="drawing" width="200"/>
+  
+<img src="metadata/Settings.png" alt="drawing" width="200"/>
 
-![Dark Splash Screen](metadata/Interface-1.png)
-![Dark Home Screen](metadata/HomePage-1.png)
-![Dark Favorites Screen](metadata/Favorites-1.png)
-![Dark Setting Screen](metadata/Settings-1.png)
+  <!-- Dark mode -->
+<img src="metadata/Interface-1.png" alt="drawing" width="200"/>
+  
+<img src="metadata/HomePage-1.png" alt="drawing" width="200"/>
+  
+<img src="metadata/Favorites-1.png" alt="drawing" width="200"/>
+  
+<img src="metadata/Settings-1.png" alt="drawing" width="200"/>
 
 ## Libraries Used
 
