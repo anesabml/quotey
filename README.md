@@ -5,22 +5,11 @@ you can specify the date and also the days you want to receive the quote
 
 ## Screenshots
 
-<img src="metadata/Interface.png" alt="drawing" width="200"/>
-  
-<img src="metadata/HomePage.png" alt="drawing" width="200"/>
-  
-<img src="metadata/Favorites.png" alt="drawing" width="200"/>
-  
-<img src="metadata/Settings.png" alt="drawing" width="200"/>
-
-  <!-- Dark mode -->
-<img src="metadata/Interface-1.png" alt="drawing" width="200"/>
-  
-<img src="metadata/HomePage-1.png" alt="drawing" width="200"/>
-  
-<img src="metadata/Favorites-1.png" alt="drawing" width="200"/>
-  
-<img src="metadata/Settings-1.png" alt="drawing" width="200"/>
+<div style="text-align:center">
+    <img src="metadata/screenshots/quotey_1.png"/>
+    <img src="metadata/screenshots/quotey_2.png"/>
+    <img src="metadata/screenshots/quotey_3.png"/>
+</div>
 
 ## Libraries Used
 
