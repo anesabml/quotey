@@ -2,7 +2,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.anesabml.quotey.ui.settings.TimePreference
-        android:defaultValue="480"
+        app:defaultValue="480"
         app:iconSpaceReserved="false"
         app:key="time"
         app:summary="@string/time_summary"
@@ -10,11 +10,11 @@
         app:useSimpleSummaryProvider="true" />
 
     <MultiSelectListPreference
+        app:defaultValue="@array/days_values"
         app:entries="@array/days_entries"
         app:entryValues="@array/days_values"
         app:iconSpaceReserved="false"
         app:key="days"
-        app:defaultValue="@array/days_values"
         app:summary="@string/days_summary"
         app:title="@string/days_title"
         app:useSimpleSummaryProvider="true" />

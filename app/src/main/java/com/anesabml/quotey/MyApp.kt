@@ -6,12 +6,12 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.PreferenceManager
 import com.anesabml.quotey.data.IQuoteDataSource
 import com.anesabml.quotey.data.IQuoteRepository
-import com.anesabml.quotey.data.QuoteRepository
-import com.anesabml.quotey.domain.usecase.*
 import com.anesabml.quotey.data.QuoteDataSource
+import com.anesabml.quotey.data.QuoteRepository
 import com.anesabml.quotey.data.api.ApiService
 import com.anesabml.quotey.data.db.QuoteyDatabase
 import com.anesabml.quotey.domain.Interactors
+import com.anesabml.quotey.domain.usecase.*
 import com.anesabml.quotey.ui.favorites.FavoriteQuotesViewModel
 import com.anesabml.quotey.ui.main.MainViewModel
 import com.anesabml.quotey.utils.WorkerUtils
@@ -91,5 +91,8 @@ class MyApp : Application() {
                 }
             }
         defaultSharedPreferences.registerOnSharedPreferenceChangeListener(listener)
+
+        // Set default values for days preference
+        PreferenceManager.setDefaultValues(this, R.xml.root_preferences, false)
     }
 }

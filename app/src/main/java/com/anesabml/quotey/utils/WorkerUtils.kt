@@ -58,7 +58,6 @@ object WorkerUtils {
         // Cancel any previous works
         workManager.cancelAllWorkByTag(WORK_TAG)
 
-
         days.forEach { day ->
 
             val dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK)
