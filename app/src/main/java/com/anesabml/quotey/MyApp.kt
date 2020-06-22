@@ -91,8 +91,5 @@ class MyApp : Application() {
                 }
             }
         defaultSharedPreferences.registerOnSharedPreferenceChangeListener(listener)
-
-        // Set default values for days preference
-        PreferenceManager.setDefaultValues(this, R.xml.root_preferences, false)
     }
 }
